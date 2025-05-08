@@ -1,0 +1,222 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcqncbvsts510"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_2qe3b"]
+[ext_resource type="Script" path="res://game.gd" id="1_ijr72"]
+[ext_resource type="Texture2D" uid="uid://bh02t06b74o6l" path="res://5 bar.png" id="2_dwokq"]
+[ext_resource type="Script" path="res://main_game.gd" id="2_fe1u3"]
+[ext_resource type="LabelSettings" uid="uid://ck5d0mk13armg" path="res://Jahr.tres" id="3_7m4li"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ckxn4"]
+font_size = 70
+font_color = Color(0, 0, 0, 1)
+shadow_size = 9
+shadow_color = Color(0, 0, 0, 0.309)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8b1e5"]
+font_size = 100
+outline_size = 20
+outline_color = Color(0, 0, 0, 0.514)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1m5nm"]
+font_size = 52
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_2qe3b")
+
+[node name="mainGame" type="Node2D" parent="."]
+script = ExtResource("2_fe1u3")
+
+[node name="Background2" type="ColorRect" parent="mainGame"]
+offset_left = -800.0
+offset_top = -450.0
+offset_right = 800.0
+offset_bottom = 450.0
+color = Color(0.419813, 0.419813, 0.419813, 1)
+
+[node name="Camera2D" type="Camera2D" parent="mainGame"]
+
+[node name="Right" type="ColorRect" parent="mainGame"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 200.0
+offset_top = -400.0
+offset_right = 700.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.693504, 0.868918, 0.474472, 1)
+
+[node name="Zeit" type="ColorRect" parent="mainGame"]
+offset_left = 220.0
+offset_top = -379.0
+offset_right = 680.0
+offset_bottom = -109.0
+color = Color(0.52227, 0.762513, 0.952487, 1)
+
+[node name="Money" type="ColorRect" parent="mainGame"]
+offset_left = 220.0
+offset_top = -100.0
+offset_right = 680.0
+offset_bottom = 108.0
+color = Color(0.838441, 0.626617, 0.747696, 1)
+
+[node name="Teile2" type="ColorRect" parent="mainGame"]
+offset_left = 220.0
+offset_top = 120.0
+offset_right = 680.0
+offset_bottom = 380.0
+color = Color(0.906197, 0.585938, 0.179734, 1)
+
+[node name="ProgressBar" type="Sprite2D" parent="mainGame"]
+texture_filter = 1
+position = Vector2(450, -150)
+scale = Vector2(15, 15)
+texture = ExtResource("2_dwokq")
+hframes = 6
+
+[node name="Jahr" type="Label" parent="mainGame"]
+texture_filter = 1
+offset_left = 233.0
+offset_top = -399.0
+offset_right = 688.0
+offset_bottom = -194.0
+text = "Jahr  1"
+label_settings = ExtResource("3_7m4li")
+
+[node name="Ziele" type="Label" parent="mainGame"]
+offset_left = 243.0
+offset_top = -97.0
+offset_right = 435.0
+offset_bottom = -1.0
+text = "Ziel :"
+label_settings = SubResource("LabelSettings_ckxn4")
+
+[node name="Geld" type="Label" parent="mainGame"]
+offset_left = 242.0
+offset_top = -2.0
+offset_right = 434.0
+offset_bottom = 94.0
+text = "Geld :"
+label_settings = SubResource("LabelSettings_ckxn4")
+
+[node name="Teile" type="Label" parent="mainGame"]
+offset_left = 243.0
+offset_top = 112.0
+offset_right = 486.0
+offset_bottom = 208.0
+text = "Teile :"
+label_settings = SubResource("LabelSettings_ckxn4")
+
+[node name="Board" type="Node2D" parent="mainGame"]
+
+[node name="Field" type="ColorRect" parent="mainGame/Board"]
+offset_left = -725.0
+offset_top = -425.0
+offset_right = 125.0
+offset_bottom = 425.0
+color = Color(0.262932, 0.262932, 0.262932, 1)
+
+[node name="Board" type="Node2D" parent="mainGame/Board/Field"]
+texture_filter = 1
+position = Vector2(725, 425)
+script = ExtResource("1_ijr72")
+
+[node name="shop" type="Node2D" parent="mainGame"]
+visible = false
+
+[node name="Field" type="ColorRect" parent="mainGame/shop"]
+offset_left = -725.0
+offset_top = -425.0
+offset_right = 125.0
+offset_bottom = 425.0
+color = Color(0.401535, 0.197957, 0.123725, 1)
+
+[node name="Button" type="Button" parent="mainGame/shop"]
+texture_filter = 1
+offset_left = -101.0
+offset_top = 255.0
+offset_right = -58.0
+offset_bottom = 286.0
+scale = Vector2(4, 4)
+text = "next"
+
+[node name="ColorRect" type="ColorRect" parent="mainGame/shop"]
+offset_left = -696.0
+offset_top = -260.0
+offset_right = -445.0
+offset_bottom = 119.0
+
+[node name="ColorRect" type="ColorRect" parent="mainGame/shop/ColorRect"]
+layout_mode = 0
+offset_left = 271.0
+offset_right = 522.0
+offset_bottom = 379.0
+
+[node name="ColorRect" type="ColorRect" parent="mainGame/shop/ColorRect/ColorRect"]
+layout_mode = 0
+offset_left = 268.0
+offset_right = 519.0
+offset_bottom = 379.0
+
+[node name="Label" type="Label" parent="mainGame/shop"]
+offset_left = -423.0
+offset_top = -416.0
+offset_right = -181.0
+offset_bottom = -279.0
+text = "Shop"
+label_settings = SubResource("LabelSettings_8b1e5")
+
+[node name="Preise" type="Node2D" parent="mainGame/shop"]
+
+[node name="zweites" type="Label" parent="mainGame/shop/Preise"]
+texture_filter = 1
+offset_left = -384.0
+offset_top = 119.0
+offset_right = -206.0
+offset_bottom = 228.0
+text = "19999$"
+label_settings = SubResource("LabelSettings_1m5nm")
+
+[node name="drites" type="Label" parent="mainGame/shop/Preise/zweites"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 264.0
+offset_top = 1.0
+offset_right = 442.0
+offset_bottom = 110.0
+text = "19999$"
+label_settings = SubResource("LabelSettings_1m5nm")
+
+[node name="erstes" type="Label" parent="mainGame/shop/Preise/zweites"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -270.0
+offset_top = 1.0
+offset_right = -92.0
+offset_bottom = 110.0
+text = "19999$"
+label_settings = SubResource("LabelSettings_1m5nm")
+
+[node name="menue" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="menue"]
+offset_left = -800.0
+offset_top = -450.0
+offset_right = 800.0
+offset_bottom = 450.0
+
+[node name="Button" type="Button" parent="menue"]
+texture_filter = 1
+offset_left = -230.0
+offset_top = -160.0
+offset_right = -184.0
+offset_bottom = -129.0
+scale = Vector2(10, 10)
+text = "Start"
+
+[connection signal="pressed" from="mainGame/shop/Button" to="mainGame" method="_on_button_pressed"]
+[connection signal="pressed" from="menue/Button" to="." method="_on_button_pressed"]
